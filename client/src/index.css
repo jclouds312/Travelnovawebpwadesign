@@ -6,8 +6,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(222 47% 11%);
+  --color-background: hsl(210 40% 98%); /* #F8FAFC White Ice */
+  --color-foreground: hsl(222 47% 11%); /* #0F172A Dark Tech Blue */
 
   --color-card: hsl(0 0% 100%);
   --color-card-foreground: hsl(222 47% 11%);
@@ -15,33 +15,33 @@
   --color-popover: hsl(0 0% 100%);
   --color-popover-foreground: hsl(222 47% 11%);
 
-  --color-primary: hsl(175 80% 40%); /* Teal color from screenshot */
+  --color-primary: hsl(175 84% 32%); /* #0D9488 Teal Modern */
   --color-primary-foreground: hsl(0 0% 100%);
 
-  --color-secondary: hsl(180 50% 96%);
-  --color-secondary-foreground: hsl(175 80% 30%);
+  --color-secondary: hsl(199 95% 60%); /* #38BDF8 Sky Blue Digital */
+  --color-secondary-foreground: hsl(222 47% 11%);
 
-  --color-muted: hsl(210 40% 96.1%);
-  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+  --color-muted: hsl(214 32% 91%); /* #E2E8F0 Light Gray */
+  --color-muted-foreground: hsl(215 16% 47%);
 
-  --color-accent: hsl(175 80% 96%);
-  --color-accent-foreground: hsl(175 80% 40%);
+  --color-accent: hsl(180 90% 82%); /* #A5F3FC Light Turquoise */
+  --color-accent-foreground: hsl(175 84% 32%);
 
-  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive: hsl(0 84% 60%);
   --color-destructive-foreground: hsl(210 40% 98%);
 
-  --color-border: hsl(214.3 31.8% 91.4%);
-  --color-input: hsl(214.3 31.8% 91.4%);
-  --color-ring: hsl(175 80% 40%);
+  --color-border: hsl(214 32% 91%);
+  --color-input: hsl(214 32% 91%);
+  --color-ring: hsl(175 84% 32%);
 
   --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
 
-  --font-sans: "Outfit", sans-serif;
+  --font-sans: "Outfit", sans-serif; /* Keeping Outfit as it matches modern sans-serif vibe */
   --font-serif: "Playfair Display", serif;
   
-  --animate-fade-in-up: fadeInUp 0.5s ease-out forwards;
+  --animate-fade-in-up: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @layer base {
@@ -55,11 +55,23 @@
 
 @layer utilities {
   .bg-gradient-brand {
-    @apply bg-linear-to-b from-[#2dd4bf] to-[#0f766e]; /* Teal gradient */
+    @apply bg-linear-to-br from-[#0D9488] via-[#0F766E] to-[#0F172A];
   }
   
+  .bg-gradient-soft {
+    @apply bg-linear-to-b from-[#F0FDFA] to-[#F8FAFC];
+  }
+
   .glass-panel {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg;
+    @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl;
+  }
+  
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-md border border-white/30 shadow-sm hover:shadow-md transition-all;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-[#0D9488] to-[#38BDF8];
   }
   
   .hide-scrollbar {

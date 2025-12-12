@@ -1,0 +1,212 @@
+Aquí tienes EL PROMPT COMPLETO, PROFESIONAL Y LISTO para generar +50 pantallas, un sistema web + PWA, con un estilo más moderno que Polarsteps, con nuevo nombre, logo, colores, estructura y componentes.
+Puedes copiarlo tal cual en Figma AI, Midjourney, Uizard, Galileo AI, v0.dev, etc.
+
+✅ PROMPT COMPLETO PARA CREAR WEB + PWA (más de 50 pantallas)
+Nombre del producto: TRAVELNOVA
+Tagline: "Explora. Registra. Comparte tu mundo."
+🚀 PROMPT MASTER
+
+(Copia y pega todo el bloque)
+
+PROMPT:
+
+Diseña una aplicación web + PWA ultra moderna llamada TravelNova, inspirada en plataformas como Polarsteps, TripAdvisor y Google Travel, pero visualmente más limpia, futurista y profesional.
+
+Quiero más de 50 pantallas totalmente nuevas basadas en el orden y composición de las referencias dadas, pero sin copiarlas, con un diseño superior, mejor organizado y actualizado al estilo 2025/2026.
+
+🎨 Estilo visual solicitado
+
+Diseño minimalista futurista.
+
+Colores principales:
+
+#0D9488 (verde agua moderno)
+
+#38BDF8 (azul pastel digital)
+
+#0F172A (azul oscuro tech)
+
+#F8FAFC (blanco hielo)
+
+Colores secundarios:
+
+#A5F3FC (turquesa claro)
+
+#E2E8F0 (gris claro)
+
+Sombras suaves tipo material-2025.
+
+Iconografía fina y redondeada tipo Phosphor Icons.
+
+Fotos premium estilo documental, naturaleza y ciudades reales.
+
+Efectos de vidrio: glassmorphism y blur backgrounds.
+
+Animaciones suaves tipo PWA native-like.
+
+🖥️ ESTRUCTURA QUE DEBE INCLUIR (más de 50 pantallas)
+1. Onboarding (5 pantallas)
+
+Bienvenida con ilustraciones futuristas.
+
+Explicación del concepto TravelNova.
+
+Permisos (ubicación, cámara, notificaciones).
+
+Selección de intereses de viaje.
+
+Crear cuenta / Login social.
+
+2. Autenticación (6 pantallas)
+
+Login minimal.
+
+Signup.
+
+Recuperar contraseña.
+
+Login con Google / Apple.
+
+Verificación OTP.
+
+Cerrar sesión segura.
+
+3. Home (3 pantallas)
+
+Dashboard con mapa global dinámico.
+
+Últimos viajes registrados.
+
+Actividad de amigos.
+
+4. Viajes (Trip Overview) (6 pantallas)
+
+Lista de viajes.
+
+Crear nuevo viaje.
+
+Vista de timeline.
+
+Vista de mapa interactivo.
+
+Estadísticas del viaje.
+
+Álbum del viaje.
+
+5. Crear Viaje (8 pantallas)
+
+Datos básicos.
+
+Fechas.
+
+Destinos.
+
+Gastos estimados.
+
+Checklist de viaje.
+
+Subida de fotos.
+
+Subida de videos.
+
+Vista previa antes de publicar.
+
+6. Destinos (6 pantallas)
+
+Explorar destinos recomendados.
+
+Detalle del destino.
+
+Guías culturales.
+
+Recomendaciones de comida.
+
+Transporte.
+
+Clima.
+
+7. Comunidad (6 pantallas)
+
+Feed de viajeros.
+
+Publicaciones con foto y mapa.
+
+Comentarios.
+
+Reacciones.
+
+Explorar usuarios.
+
+Grupos temáticos.
+
+8. Perfil del Usuario (5 pantallas)
+
+Perfil personal.
+
+Logros y trofeos.
+
+Estadísticas de viajes.
+
+Ajustes de cuenta.
+
+Mapa personal de viajes.
+
+9. Ajustes (Settings) (5 pantallas)
+
+General.
+
+Privacidad.
+
+Notificaciones.
+
+Seguridad.
+
+Personalización visual.
+
+10. Funciones Especiales (PWA) (6 pantallas)
+
+Modo offline completo.
+
+Modo oscuro automático.
+
+Sincronización inteligente.
+
+Favoritos.
+
+Copia de seguridad nube.
+
+Descarga de mapas offline.
+
+11. Elementos gráficos extra (5 pantallas)
+
+Nueva marca TravelNova.
+
+Logo principal.
+
+Variante monocromática.
+
+Icono de app PWA.
+
+Paleta visual + componentes UI.
+
+📱 Objetivo final
+
+Generar más de 50 pantallas limpias, modernas y consistentes, listas para Figma, con estructura UX completa y un estilo visual premium.
+
+Cada pantalla debe mantener:
+
+Espaciado limpio
+
+Tipografía moderna sans-serif (Inter, Plus Jakarta Sans o SF Rounded)
+
+Iconografía mínima
+
+Fotos reales y bien recortadas
+
+Botones redondeados
+
+Diseño accesible y responsivo
+
+🧩 INSTRUCCIÓN FINAL
+
+“Generar todas las pantallas en tamaño 1080×1920 px, listas para importar a Figma, con componentes reutilizables y diseño consistente en todo el sistema.”

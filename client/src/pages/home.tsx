@@ -1,146 +1,144 @@
-import { useState } from "react";
 import Layout from "@/components/layout";
-import { Search, MapPin, Star, Heart } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Bell, Search, MapPin, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { destinations, categories, type Destination } from "@/lib/dummy-data";
 import { motion } from "framer-motion";
 
-// Import generated images
-import baliImage from "@assets/generated_images/bali_landscape.png";
-import santoriniImage from "@assets/generated_images/santorini_architecture.png";
-import tokyoImage from "@assets/generated_images/tokyo_street_night.png";
-import logoIcon from "@assets/generated_images/travelnova_logo_icon.png";
+// Assets
+import avatar from "@assets/generated_images/modern_avatar_male.png";
+import mapBg from "@assets/generated_images/abstract_map_background.png";
+import mountainImg from "@assets/generated_images/cinematic_mountain_trip.png";
+import cityImg from "@assets/generated_images/cyberpunk_city_trip.png";
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
-
-  const filteredDestinations =
-    activeCategory === "All"
-      ? destinations
-      : destinations.filter((d: Destination) => d.category === activeCategory);
-
-  // Map dummy images to real generated ones for the demo
-  const getImage = (id: string) => {
-    if (id === "1") return baliImage;
-    if (id === "2") return santoriniImage;
-    if (id === "3") return tokyoImage;
-    return baliImage; // Fallback
-  };
-
   return (
     <Layout>
-      {/* Header Section */}
-      <div className="relative px-6 pt-12 pb-6">
-        <div className="flex justify-between items-center mb-6">
-          <div className="flex items-center gap-2">
-             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center overflow-hidden">
-                <img src={logoIcon} alt="Travelnova" className="w-full h-full object-cover p-1" />
-             </div>
-             <span className="font-serif text-2xl font-bold tracking-tight text-primary">Travelnova</span>
+      <div className="relative min-h-screen pb-20 bg-slate-50">
+        
+        {/* Header Overlay */}
+        <div className="absolute top-0 left-0 right-0 z-10 px-6 pt-12 pb-4 flex justify-between items-center bg-gradient-to-b from-white/90 to-transparent">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full border-2 border-white shadow-sm overflow-hidden">
+               <img src={avatar} alt="User" className="w-full h-full object-cover" />
+            </div>
+            <div>
+              <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Hola,</p>
+              <h2 className="text-lg font-bold text-slate-900 leading-none">Alex Traveler</h2>
+            </div>
           </div>
-          <div className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden border-2 border-white shadow-sm">
-            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User" />
-          </div>
-        </div>
-
-        <h1 className="text-4xl font-serif font-medium leading-tight mb-6 text-slate-800">
-          Where do you want <br />
-          <span className="text-primary italic">to go?</span>
-        </h1>
-
-        <div className="relative group">
-          <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-            <Search className="h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
-          </div>
-          <Input
-            className="pl-10 h-14 rounded-2xl bg-white shadow-sm border-slate-100 focus-visible:ring-primary/20 text-base"
-            placeholder="Search destinations, hotels..."
-          />
-        </div>
-      </div>
-
-      {/* Categories */}
-      <div className="px-6 mb-8 overflow-x-auto hide-scrollbar pb-2">
-        <div className="flex gap-3">
-          {categories.map((category: string) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`
-                px-5 py-2.5 rounded-full whitespace-nowrap text-sm font-medium transition-all duration-300
-                ${
-                  activeCategory === category
-                    ? "bg-primary text-white shadow-lg shadow-primary/30 scale-105"
-                    : "bg-white text-slate-600 hover:bg-slate-50 border border-slate-100"
-                }
-              `}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Popular Destinations */}
-      <div className="px-6 pb-24">
-        <div className="flex justify-between items-end mb-6">
-          <h2 className="text-xl font-semibold text-slate-800">Popular Trips</h2>
-          <Button variant="link" className="text-primary p-0 h-auto font-medium">
-            See All
+          <Button size="icon" variant="ghost" className="rounded-full bg-white/80 backdrop-blur-sm shadow-sm text-slate-600">
+            <Bell size={20} />
           </Button>
         </div>
 
-        <div className="space-y-6">
-          {filteredDestinations.map((destination: Destination, index: number) => (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              key={destination.id}
-              className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100"
-            >
-              {/* Image Container */}
-              <div className="aspect-[4/3] relative overflow-hidden">
-                <img
-                  src={getImage(destination.id)}
-                  alt={destination.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <button className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-red-500 transition-colors">
-                  <Heart className="w-5 h-5 fill-current opacity-90" />
-                </button>
-                <div className="absolute top-4 left-4">
-                    <Badge variant="secondary" className="bg-white/90 backdrop-blur-sm text-slate-800 font-semibold px-3 py-1 shadow-sm border-0">
-                        ${destination.price}/night
-                    </Badge>
-                </div>
+        {/* Map Area */}
+        <div className="h-[45vh] w-full relative overflow-hidden rounded-b-[2.5rem] shadow-2xl shadow-slate-200 z-0">
+           <img src={mapBg} alt="Map" className="w-full h-full object-cover opacity-80" />
+           
+           {/* Floating Map Card */}
+           <motion.div 
+             initial={{ y: 20, opacity: 0 }}
+             animate={{ y: 0, opacity: 1 }}
+             transition={{ delay: 0.2 }}
+             className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white/50 flex items-center gap-4"
+           >
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                 <MapPin size={24} />
               </div>
-
-              {/* Content */}
-              <div className="p-5">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">
-                    {destination.title}
-                  </h3>
-                  <div className="flex items-center gap-1 text-amber-400">
-                    <Star className="w-4 h-4 fill-current" />
-                    <span className="text-sm font-semibold text-slate-700">{destination.rating}</span>
-                  </div>
-                </div>
-                
-                <div className="flex items-center text-muted-foreground text-sm mb-4">
-                  <MapPin className="w-4 h-4 mr-1 text-primary" />
-                  {destination.location}
-                </div>
-
-                <p className="text-slate-500 text-sm line-clamp-2 leading-relaxed">
-                    {destination.description}
-                </p>
+              <div className="flex-1">
+                 <p className="text-xs text-slate-500 font-medium uppercase">Ubicación Actual</p>
+                 <h3 className="font-bold text-slate-900">Kyoto, Japón</h3>
               </div>
-            </motion.div>
-          ))}
+              <Button size="sm" className="rounded-full bg-primary h-8 px-4 text-xs font-bold">Check-in</Button>
+           </motion.div>
+        </div>
+
+        {/* Recent Activity / Content */}
+        <div className="px-6 pt-8 space-y-8">
+           
+           {/* Section Header */}
+           <div className="flex justify-between items-center">
+              <h3 className="text-xl font-bold text-slate-900">Tus Viajes Activos</h3>
+              <span className="text-sm font-medium text-primary cursor-pointer">Ver todos</span>
+           </div>
+
+           {/* Cards Scroll */}
+           <div className="flex gap-4 overflow-x-auto hide-scrollbar pb-4 -mx-6 px-6">
+              
+              {/* Card 1 */}
+              <motion.div 
+                 initial={{ x: 50, opacity: 0 }}
+                 animate={{ x: 0, opacity: 1 }}
+                 transition={{ delay: 0.3 }}
+                 className="w-[280px] h-[340px] shrink-0 relative rounded-[2rem] overflow-hidden group shadow-lg"
+              >
+                 <img src={mountainImg} alt="Trip" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+                 
+                 <div className="absolute top-4 right-4">
+                    <div className="bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-3 py-1 text-xs font-bold text-white">
+                       En curso
+                    </div>
+                 </div>
+
+                 <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-2xl font-bold text-white mb-1">Alpes Suizos</h3>
+                    <p className="text-white/80 text-sm mb-4">12 Oct - 24 Oct</p>
+                    
+                    <div className="flex items-center gap-2">
+                       <div className="flex -space-x-2">
+                          <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200" />
+                          <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-300" />
+                       </div>
+                       <span className="text-xs text-white/80 font-medium">+3 amigos</span>
+                    </div>
+                 </div>
+              </motion.div>
+
+              {/* Card 2 */}
+              <motion.div 
+                 initial={{ x: 50, opacity: 0 }}
+                 animate={{ x: 0, opacity: 1 }}
+                 transition={{ delay: 0.4 }}
+                 className="w-[280px] h-[340px] shrink-0 relative rounded-[2rem] overflow-hidden group shadow-lg"
+              >
+                 <img src={cityImg} alt="Trip" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+                 
+                 <div className="absolute top-4 right-4">
+                    <div className="bg-slate-900/40 backdrop-blur-md border border-white/10 rounded-full px-3 py-1 text-xs font-bold text-white">
+                       Planeado
+                    </div>
+                 </div>
+
+                 <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-2xl font-bold text-white mb-1">Tokyo Neon</h3>
+                    <p className="text-white/80 text-sm mb-4">15 Nov - 30 Nov</p>
+                    
+                    <Button variant="secondary" size="sm" className="w-full rounded-full bg-white/20 backdrop-blur-sm border border-white/40 text-white hover:bg-white/30">
+                       Ver Detalles
+                    </Button>
+                 </div>
+              </motion.div>
+
+           </div>
+
+           {/* Stats Row */}
+           <div className="grid grid-cols-2 gap-4">
+              <div className="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex flex-col gap-2">
+                 <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 mb-2">
+                    <MapPin size={20} />
+                 </div>
+                 <span className="text-3xl font-bold text-slate-900">12</span>
+                 <span className="text-xs text-slate-400 font-medium uppercase tracking-wider">Países Visitados</span>
+              </div>
+              <div className="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex flex-col gap-2">
+                 <div className="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center text-teal-500 mb-2">
+                    <Map size={20} />
+                 </div>
+                 <span className="text-3xl font-bold text-slate-900">84%</span>
+                 <span className="text-xs text-slate-400 font-medium uppercase tracking-wider">Mundo por Explorar</span>
+              </div>
+           </div>
         </div>
       </div>
     </Layout>
