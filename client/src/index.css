@@ -6,7 +6,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: hsl(220 30% 98%);
+  --color-background: hsl(0 0% 100%);
   --color-foreground: hsl(222 47% 11%);
 
   --color-card: hsl(0 0% 100%);
@@ -15,24 +15,24 @@
   --color-popover: hsl(0 0% 100%);
   --color-popover-foreground: hsl(222 47% 11%);
 
-  --color-primary: hsl(199 89% 48%);
-  --color-primary-foreground: hsl(210 40% 98%);
+  --color-primary: hsl(175 80% 40%); /* Teal color from screenshot */
+  --color-primary-foreground: hsl(0 0% 100%);
 
-  --color-secondary: hsl(210 40% 96.1%);
-  --color-secondary-foreground: hsl(222 47% 11.2%);
+  --color-secondary: hsl(180 50% 96%);
+  --color-secondary-foreground: hsl(175 80% 30%);
 
   --color-muted: hsl(210 40% 96.1%);
   --color-muted-foreground: hsl(215.4 16.3% 46.9%);
 
-  --color-accent: hsl(210 40% 96.1%);
-  --color-accent-foreground: hsl(222 47% 11.2%);
+  --color-accent: hsl(175 80% 96%);
+  --color-accent-foreground: hsl(175 80% 40%);
 
   --color-destructive: hsl(0 84.2% 60.2%);
   --color-destructive-foreground: hsl(210 40% 98%);
 
   --color-border: hsl(214.3 31.8% 91.4%);
   --color-input: hsl(214.3 31.8% 91.4%);
-  --color-ring: hsl(199 89% 48%);
+  --color-ring: hsl(175 80% 40%);
 
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
@@ -40,6 +40,8 @@
 
   --font-sans: "Outfit", sans-serif;
   --font-serif: "Playfair Display", serif;
+  
+  --animate-fade-in-up: fadeInUp 0.5s ease-out forwards;
 }
 
 @layer base {
@@ -51,14 +53,13 @@
   }
 }
 
-/* Custom Utilities for Glassmorphism & Cards */
 @layer utilities {
-  .glass-panel {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg;
+  .bg-gradient-brand {
+    @apply bg-linear-to-b from-[#2dd4bf] to-[#0f766e]; /* Teal gradient */
   }
   
-  .text-shadow {
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg;
   }
   
   .hide-scrollbar {
@@ -68,5 +69,16 @@
   
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
