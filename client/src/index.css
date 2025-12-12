@@ -6,8 +6,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: hsl(210 40% 98%); /* #F8FAFC White Ice */
-  --color-foreground: hsl(222 47% 11%); /* #0F172A Dark Tech Blue */
+  --color-background: hsl(210 40% 98%);
+  --color-foreground: hsl(222 47% 11%);
 
   --color-card: hsl(0 0% 100%);
   --color-card-foreground: hsl(222 47% 11%);
@@ -15,31 +15,30 @@
   --color-popover: hsl(0 0% 100%);
   --color-popover-foreground: hsl(222 47% 11%);
 
-  --color-primary: hsl(175 84% 32%); /* #0D9488 Teal Modern */
+  --color-primary: hsl(172 66% 35%); /* Polarsteps-ish Dark Teal */
   --color-primary-foreground: hsl(0 0% 100%);
 
-  --color-secondary: hsl(199 95% 60%); /* #38BDF8 Sky Blue Digital */
+  --color-secondary: hsl(199 95% 60%);
   --color-secondary-foreground: hsl(222 47% 11%);
 
-  --color-muted: hsl(214 32% 91%); /* #E2E8F0 Light Gray */
+  --color-muted: hsl(214 32% 91%);
   --color-muted-foreground: hsl(215 16% 47%);
 
-  --color-accent: hsl(180 90% 82%); /* #A5F3FC Light Turquoise */
-  --color-accent-foreground: hsl(175 84% 32%);
+  --color-accent: hsl(172 66% 94%);
+  --color-accent-foreground: hsl(172 66% 35%);
 
   --color-destructive: hsl(0 84% 60%);
   --color-destructive-foreground: hsl(210 40% 98%);
 
   --color-border: hsl(214 32% 91%);
   --color-input: hsl(214 32% 91%);
-  --color-ring: hsl(175 84% 32%);
+  --color-ring: hsl(172 66% 35%);
 
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
   --radius-lg: 1.5rem;
 
-  --font-sans: "Outfit", sans-serif; /* Keeping Outfit as it matches modern sans-serif vibe */
-  --font-serif: "Playfair Display", serif;
+  --font-sans: "DM Sans", "Outfit", sans-serif; /* Switching to DM Sans for that modern app feel */
   
   --animate-fade-in-up: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -55,25 +54,13 @@
 
 @layer utilities {
   .bg-gradient-brand {
-    @apply bg-linear-to-br from-[#0D9488] via-[#0F766E] to-[#0F172A];
+    @apply bg-linear-to-br from-[#0D9488] to-[#115E59];
   }
   
-  .bg-gradient-soft {
-    @apply bg-linear-to-b from-[#F0FDFA] to-[#F8FAFC];
-  }
-
   .glass-panel {
     @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl;
   }
-  
-  .glass-card {
-    @apply bg-white/60 backdrop-blur-md border border-white/30 shadow-sm hover:shadow-md transition-all;
-  }
 
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-linear-to-r from-[#0D9488] to-[#38BDF8];
-  }
-  
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;

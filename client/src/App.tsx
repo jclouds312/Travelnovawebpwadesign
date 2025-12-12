@@ -14,6 +14,7 @@ import Register from "@/pages/register";
 import Trips from "@/pages/trips";
 import CreateTrip from "@/pages/create-trip";
 import Community from "@/pages/community";
+import TripDetail from "@/pages/trip-detail";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -27,6 +28,7 @@ function Router() {
       <Route path="/register" component={Register} />
       
       <Route path="/trips" component={Trips} />
+      <Route path="/trip/:id" component={TripDetail} />
       <Route path="/create-trip" component={CreateTrip} />
       <Route path="/community" component={Community} />
       
