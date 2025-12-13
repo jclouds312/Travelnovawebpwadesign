@@ -33,13 +33,13 @@ export default function CreateTrip() {
 
        {/* Main Content Area */}
        <div className="flex-1 relative z-10 flex flex-col">
-          <div className="flex-1 m-6 bg-slate-900/50 backdrop-blur-md rounded-[2.5rem] border-2 border-dashed border-white/20 flex flex-col items-center justify-center relative overflow-hidden group">
+          <div className="flex-1 m-6 bg-slate-900/50 backdrop-blur-md rounded-[2.5rem] border-2 border-dashed border-neon-silver/50 flex flex-col items-center justify-center relative overflow-hidden group shadow-[0_0_20px_theme(colors.neon.silver)]">
              
              {/* Placeholder for camera preview */}
              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/80 pointer-events-none" />
              
              <div className="text-center space-y-6 relative z-10">
-                <div className="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500">
+                <div className="w-24 h-24 rounded-full bg-white/5 border border-neon-gold/30 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_15px_theme(colors.neon.gold)]">
                    <Camera size={40} className="text-white/50" />
                 </div>
                 <h3 className="text-white font-bold text-xl">Captura tu momento</h3>
@@ -48,10 +48,10 @@ export default function CreateTrip() {
 
              {/* Tools Overlay */}
              <div className="absolute right-6 top-6 flex flex-col gap-4">
-                <Button size="icon" className="rounded-full bg-black/40 text-white hover:bg-black/60 backdrop-blur-md border border-white/10">
+                <Button size="icon" className="rounded-full bg-black/40 text-white hover:bg-black/60 backdrop-blur-md border border-neon-silver/30">
                    <Mic size={20} />
                 </Button>
-                <Button size="icon" className="rounded-full bg-black/40 text-white hover:bg-black/60 backdrop-blur-md border border-white/10">
+                <Button size="icon" className="rounded-full bg-black/40 text-white hover:bg-black/60 backdrop-blur-md border border-neon-silver/30">
                    <MapPin size={20} />
                 </Button>
              </div>
@@ -60,16 +60,16 @@ export default function CreateTrip() {
           {/* Controls */}
           <div className="px-6 pb-12">
              <div className="flex items-center justify-between gap-6">
-                <div className="flex-1 h-[80px] rounded-[2rem] bg-neon-grape/20 border border-neon-grape/50 flex flex-col items-center justify-center gap-1 cursor-pointer hover:bg-neon-grape/30 transition-all">
+                <div className="flex-1 h-[80px] rounded-[2rem] bg-neon-grape/20 border border-neon-grape/50 flex flex-col items-center justify-center gap-1 cursor-pointer hover:bg-neon-grape/30 transition-all shadow-[0_0_10px_theme(colors.neon.grape)]">
                    <ImageIcon className="text-neon-grape" size={24} />
                    <span className="text-xs font-bold text-neon-grape uppercase tracking-wider">Galería</span>
                 </div>
                 
-                <div className="w-20 h-20 rounded-full border-4 border-white flex items-center justify-center relative cursor-pointer group">
+                <div className="w-20 h-20 rounded-full border-4 border-white flex items-center justify-center relative cursor-pointer group shadow-[0_0_20px_theme(colors.white)]">
                    <div className="w-16 h-16 rounded-full bg-white group-hover:scale-90 transition-transform duration-200" />
                 </div>
 
-                <div className="flex-1 h-[80px] rounded-[2rem] bg-neon-raspberry/20 border border-neon-raspberry/50 flex flex-col items-center justify-center gap-1 cursor-pointer hover:bg-neon-raspberry/30 transition-all">
+                <div className="flex-1 h-[80px] rounded-[2rem] bg-neon-raspberry/20 border border-neon-raspberry/50 flex flex-col items-center justify-center gap-1 cursor-pointer hover:bg-neon-raspberry/30 transition-all shadow-[0_0_10px_theme(colors.neon.raspberry)]">
                    <Video className="text-neon-raspberry" size={24} />
                    <span className="text-xs font-bold text-neon-raspberry uppercase tracking-wider">Video</span>
                 </div>

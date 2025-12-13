@@ -39,6 +39,8 @@
   --color-neon-pineapple: #fcff40;
   --color-neon-kiwi: #8aff36;
   --color-neon-raspberry: #ff0055;
+  --color-neon-silver: #e2e8f0;
+  --color-neon-gold: #fbbf24;
 
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
@@ -78,6 +80,20 @@
   
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Neon Borders */
+  .border-neon-silver {
+    @apply border border-neon-silver shadow-[0_0_8px_rgba(226,232,240,0.5)];
+  }
+
+  .border-neon-gold {
+    @apply border border-neon-gold shadow-[0_0_8px_rgba(251,191,36,0.5)];
+  }
+  
+  /* Grape Border */
+  .border-neon-grape {
+     @apply border border-neon-grape shadow-[0_0_8px_rgba(176,38,255,0.4)];
   }
 }
 

@@ -109,7 +109,7 @@ export default function Home() {
 
         {/* Featured Hero Card */}
         <div className="px-6 mb-8 relative z-10">
-           <div className="bg-slate-900 rounded-[2.5rem] p-1 shadow-2xl shadow-neon-grape/20 overflow-hidden relative group cursor-pointer h-[320px]">
+           <div className="bg-slate-900 rounded-[2.5rem] p-1 shadow-2xl shadow-neon-grape/20 overflow-hidden relative group cursor-pointer h-[320px] border border-neon-gold">
               <div className="absolute inset-0">
                  <img src={cartagenaImg} className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700" alt="Map bg" />
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
@@ -171,7 +171,7 @@ export default function Home() {
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                transition={{ duration: 0.5 }}
-               className="bg-white rounded-[2rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100"
+               className="bg-white rounded-[2rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-neon-silver"
              >
                 <div className="p-4 flex items-center justify-between">
                    <div className="flex items-center gap-3">
