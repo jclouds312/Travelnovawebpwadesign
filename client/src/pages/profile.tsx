@@ -1,9 +1,17 @@
 import Layout from "@/components/layout";
-import { Settings, CreditCard, Bell, LogOut, ChevronRight, MapPin, Camera, Heart, Globe, Award, Shield } from "lucide-react";
+import { Settings, CreditCard, Bell, LogOut, ChevronRight, MapPin, Camera, Heart, Globe, Award, Shield, Plane, BookOpen, Star } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import abstractBg from "@assets/generated_images/abstract_neon_background_with_grape,_pineapple,_kiwi,_and_raspberry_colors.png";
 import adminAvatar from "@assets/generated_images/colombian_male_traveler_avatar.png";
+import cartagenaImg from "@assets/generated_images/cartagena_colombia_destination.png";
+import kyotoImg from "@assets/generated_images/kyoto_japan_destination.png";
+
+const myTrips = [
+  { id: 1, title: "Cartagena Escape", location: "Colombia", date: "Oct 2024", image: cartagenaImg, status: "En curso" },
+  { id: 2, title: "Sueño Japonés", location: "Japón", date: "Sep 2023", image: kyotoImg, status: "Completado" },
+];
 
 export default function Profile() {
   return (
@@ -57,6 +65,35 @@ export default function Profile() {
            </div>
         </div>
 
+        {/* My Content Section */}
+        <div className="px-6 mb-8">
+           <h3 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+              <Plane size={20} className="text-neon-pineapple" /> Mis Viajes
+           </h3>
+           <div className="space-y-4">
+              {myTrips.map(trip => (
+                 <div key={trip.id} className="bg-white p-3 rounded-2xl shadow-sm border border-neon-silver flex gap-4 hover:shadow-md transition-shadow cursor-pointer">
+                    <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0">
+                       <img src={trip.image} className="w-full h-full object-cover" alt={trip.title} />
+                    </div>
+                    <div className="flex-1 flex flex-col justify-center">
+                       <div className="flex justify-between items-start mb-1">
+                          <h4 className="font-bold text-slate-900">{trip.title}</h4>
+                          <Badge variant="secondary" className="text-[10px] h-5 bg-slate-100 text-slate-500">{trip.status}</Badge>
+                       </div>
+                       <p className="text-xs text-slate-500 mb-2 flex items-center gap-1">
+                          <MapPin size={10} /> {trip.location}
+                       </p>
+                       <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">{trip.date}</span>
+                    </div>
+                 </div>
+              ))}
+              <Button variant="outline" className="w-full rounded-xl border-dashed border-slate-300 text-slate-400 hover:text-neon-pineapple hover:border-neon-pineapple hover:bg-neon-pineapple/5 h-12">
+                 <PlusIcon /> Crear nuevo viaje
+              </Button>
+           </div>
+        </div>
+
         {/* Menu Sections */}
         <div className="px-6 space-y-6">
            <div className="bg-white rounded-[1.5rem] p-2 shadow-sm border border-neon-silver">
@@ -95,4 +132,13 @@ export default function Profile() {
       </div>
     </Layout>
   );
+}
+
+function PlusIcon() {
+   return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+         <line x1="12" y1="5" x2="12" y2="19"></line>
+         <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+   )
 }
