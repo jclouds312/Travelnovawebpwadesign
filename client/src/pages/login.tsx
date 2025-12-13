@@ -2,10 +2,15 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import logo from "@assets/generated_images/travelnova_globe_logo.png"; // Using older logo asset for now, or could use new ones
+import logo from "@assets/generated_images/travelnova_globe_logo.png"; 
 import mapBg from "@assets/generated_images/abstract_map_background.png";
 import { useState } from "react";
-import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail, User } from "lucide-react";
+
+// Community avatars for the login screen "Join X users"
+import userJapan from "@assets/generated_images/japanese_female_traveler_avatar.png";
+import userFrance from "@assets/generated_images/french_male_traveler_avatar.png";
+import userBrazil from "@assets/generated_images/brazilian_female_traveler_avatar.png";
 
 export default function Login() {
   const [, setLocation] = useLocation();
@@ -13,6 +18,8 @@ export default function Login() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    // Here we would typically validate credentials
+    // For now, redirect to the main app (home)
     setLocation("/");
   };
 
@@ -28,17 +35,20 @@ export default function Login() {
            initial={{ opacity: 0, y: 20 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.5 }}
-           className="bg-white/80 backdrop-blur-xl p-8 rounded-[2rem] shadow-2xl border border-white/60"
+           className="bg-white/80 backdrop-blur-xl p-8 rounded-[2rem] shadow-2xl border border-white/60 relative"
         >
-          <div className="flex justify-center mb-6">
-             <div className="w-16 h-16 rounded-2xl bg-gradient-brand flex items-center justify-center shadow-lg shadow-primary/30 transform -rotate-3">
-                <img src={logo} alt="Logo" className="w-10 h-10 brightness-0 invert" />
+          {/* Decorative glowing orb */}
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-neon-grape/30 rounded-full blur-xl pointer-events-none" />
+
+          <div className="flex justify-center mb-6 relative">
+             <div className="w-20 h-20 rounded-[1.5rem] bg-gradient-brand flex items-center justify-center shadow-lg shadow-primary/30 transform -rotate-3 border-4 border-white">
+                <img src={logo} alt="Logo" className="w-12 h-12 brightness-0 invert" />
              </div>
           </div>
           
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold text-slate-900 mb-2">Bienvenido de nuevo</h1>
-            <p className="text-slate-500">Ingresa a tu cuenta TravelNova</p>
+            <p className="text-slate-500">Tu pasaporte a nuevas aventuras</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-5">
@@ -50,6 +60,7 @@ export default function Login() {
                 </div>
                 <Input 
                    type="email" 
+                   defaultValue="viajero@travelnova.com"
                    placeholder="hola@travelnova.com" 
                    className="pl-12 h-14 rounded-2xl border-slate-200 bg-slate-50/50 focus:bg-white transition-all focus:border-primary/50 focus:ring-4 focus:ring-primary/10"
                 />
@@ -67,6 +78,7 @@ export default function Login() {
                 </div>
                 <Input 
                    type={showPassword ? "text" : "password"} 
+                   defaultValue="password123"
                    placeholder="••••••••" 
                    className="pl-12 pr-12 h-14 rounded-2xl border-slate-200 bg-slate-50/50 focus:bg-white transition-all focus:border-primary/50 focus:ring-4 focus:ring-primary/10"
                 />
@@ -101,8 +113,22 @@ export default function Login() {
         </motion.div>
       </div>
       
+      {/* Community Teaser */}
       <div className="p-6 text-center z-10">
-        <p className="text-slate-500">
+        <div className="flex items-center justify-center -space-x-3 mb-3">
+           {[userJapan, userFrance, userBrazil].map((img, i) => (
+              <div key={i} className="w-8 h-8 rounded-full border-2 border-slate-50 overflow-hidden">
+                 <img src={img} className="w-full h-full object-cover" alt="User" />
+              </div>
+           ))}
+           <div className="w-8 h-8 rounded-full border-2 border-slate-50 bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">
+             +2k
+           </div>
+        </div>
+        <p className="text-slate-500 mb-1">
+          Únete a nuestra comunidad global
+        </p>
+        <p className="text-slate-500 text-sm">
           ¿No tienes cuenta? <Link href="/register"><a className="font-bold text-primary hover:underline">Regístrate</a></Link>
         </p>
       </div>
