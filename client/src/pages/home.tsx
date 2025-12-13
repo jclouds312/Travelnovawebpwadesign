@@ -1,4 +1,5 @@
 import Layout from "@/components/layout";
+import { Link } from "wouter";
 import { Bell, MapPin, Search, Star, ArrowRight, Globe, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -118,12 +119,14 @@ export default function Home() {
               <h3 className="font-bold text-slate-900 text-lg">Viajeros que sigues</h3>
            </div>
            <div className="flex gap-4 overflow-x-auto hide-scrollbar px-6 pb-2">
-              <div className="flex flex-col items-center gap-2 shrink-0 cursor-pointer">
-                 <div className="w-16 h-16 rounded-full border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-400 hover:border-primary hover:text-primary transition-colors bg-white">
-                    <Plus size={24} />
-                 </div>
-                 <span className="text-xs font-medium text-slate-500">Buscar</span>
-              </div>
+              <Link href="/community">
+                <div className="flex flex-col items-center gap-2 shrink-0 cursor-pointer">
+                   <div className="w-16 h-16 rounded-full border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-400 hover:border-primary hover:text-primary transition-colors bg-white">
+                      <Plus size={24} />
+                   </div>
+                   <span className="text-xs font-medium text-slate-500">Buscar</span>
+                </div>
+              </Link>
               {activeUsers.map((user, i) => (
                 <motion.div 
                   key={user.id}
