@@ -34,11 +34,17 @@
   --color-input: hsl(214 32% 91%);
   --color-ring: hsl(172 66% 35%);
 
+  /* Neon Palette */
+  --color-neon-grape: #b026ff;
+  --color-neon-pineapple: #fcff40;
+  --color-neon-kiwi: #8aff36;
+  --color-neon-raspberry: #ff0055;
+
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
   --radius-lg: 1.5rem;
 
-  --font-sans: "DM Sans", "Outfit", sans-serif; /* Switching to DM Sans for that modern app feel */
+  --font-sans: "DM Sans", "Outfit", sans-serif;
   
   --animate-fade-in-up: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -55,6 +61,10 @@
 @layer utilities {
   .bg-gradient-brand {
     @apply bg-linear-to-br from-[#0D9488] to-[#115E59];
+  }
+
+  .bg-gradient-neon {
+    @apply bg-linear-to-br from-neon-grape via-neon-raspberry to-neon-pineapple;
   }
   
   .glass-panel {

@@ -1,6 +1,5 @@
 import Layout from "@/components/layout";
-import { Link } from "wouter";
-import { Bell, MapPin, Search, Star, ArrowRight, Globe, Plus } from "lucide-react";
+import { Bell, MapPin, Search, Star, ArrowRight, Globe, Plus, Camera, Video, Image as ImageIcon, Heart, MessageCircle, Share2, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
@@ -18,6 +17,9 @@ import parisImg from "@assets/generated_images/paris_france_destination.png";
 import rioImg from "@assets/generated_images/rio_de_janeiro_destination.png";
 import santoriniImg from "@assets/generated_images/santorini_greece_luxury.png";
 import swissImg from "@assets/generated_images/swiss_alps_hiking.png";
+import abstractBg from "@assets/generated_images/abstract_neon_background_with_grape,_pineapple,_kiwi,_and_raspberry_colors.png";
+
+import { Link } from "wouter";
 
 const activeUsers = [
   { id: 1, name: "Yuki", country: "Japón", avatar: userJapan, status: "Kyoto" },
@@ -25,106 +27,65 @@ const activeUsers = [
   { id: 3, name: "Ana", country: "Brasil", avatar: userBrazil, status: "Rio" },
 ];
 
+const feedItems = [
+  {
+    id: 1,
+    user: { name: "Ana Silva", avatar: userBrazil, location: "Rio de Janeiro, Brasil" },
+    image: rioImg,
+    caption: "Sunset vibes at Copacabana! 🌅✨ #Brasil #Travel",
+    likes: 342,
+    comments: 28,
+    time: "2h ago"
+  },
+  {
+    id: 2,
+    user: { name: "Pierre Dubois", avatar: userFrance, location: "Paris, France" },
+    image: parisImg,
+    caption: "Coffee and croissants by the Seine. 🥐☕️",
+    likes: 892,
+    comments: 54,
+    time: "5h ago"
+  }
+];
+
 export default function Home() {
   return (
     <Layout>
-      <div className="min-h-screen bg-slate-50 pb-24">
+      <div className="min-h-screen bg-slate-50 pb-24 relative overflow-hidden">
         
+        {/* Neon Abstract Background Blob */}
+        <div className="absolute top-0 left-0 w-full h-[500px] z-0 opacity-20 pointer-events-none">
+           <img src={abstractBg} className="w-full h-full object-cover mask-gradient-b" alt="bg" />
+           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50" />
+        </div>
+
         {/* Header Minimalista */}
-        <div className="px-6 pt-14 pb-4 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-30 border-b border-slate-100">
+        <div className="px-6 pt-14 pb-4 flex justify-between items-center bg-white/60 backdrop-blur-xl sticky top-0 z-30 border-b border-white/20">
           <div className="flex items-center gap-3">
-             <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-white shadow-sm">
+             <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-neon-grape shadow-lg shadow-neon-grape/20">
                  <img src={adminAvatar} alt="Profile" className="w-full h-full object-cover" />
              </div>
              <div>
                 <h2 className="text-sm font-bold text-slate-900 leading-tight">Mateo Viajero</h2>
-                <p className="text-[10px] text-primary font-medium uppercase tracking-wider flex items-center gap-1">
-                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"/> En línea
+                <p className="text-[10px] text-neon-grape font-bold uppercase tracking-wider flex items-center gap-1">
+                   <span className="w-1.5 h-1.5 rounded-full bg-neon-grape animate-pulse"/> En línea
                 </p>
              </div>
           </div>
-          <Button size="icon" variant="ghost" className="rounded-full text-slate-400 hover:text-slate-900 hover:bg-slate-100">
+          <Button size="icon" variant="ghost" className="rounded-full text-slate-500 hover:text-neon-raspberry hover:bg-neon-raspberry/10 transition-colors">
              <Bell size={20} />
           </Button>
         </div>
 
-        {/* Hero Map Widget (Polarsteps Style) */}
-        <div className="px-6 py-6">
-           <div className="bg-slate-900 rounded-[2rem] p-1 shadow-2xl shadow-slate-200 overflow-hidden relative group cursor-pointer h-[280px]">
-              <div className="absolute inset-0">
-                 <img src={cartagenaImg} className="w-full h-full object-cover opacity-60 group-hover:opacity-50 transition-opacity duration-500" alt="Map bg" />
-                 {/* Decorative Map Lines/Dots overlay could go here */}
-                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90" />
-              </div>
-
-              <div className="relative h-full flex flex-col justify-between p-6">
-                 <div className="flex justify-between items-start">
-                    <div className="bg-white/10 backdrop-blur-md rounded-full px-3 py-1 text-xs font-bold text-white border border-white/10 flex items-center gap-2">
-                       <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                       Viaje Activo
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-md rounded-full p-2 text-white border border-white/10">
-                       <Globe size={18} />
-                    </div>
-                 </div>
-
-                 <div>
-                    <p className="text-slate-300 text-xs font-medium uppercase tracking-widest mb-1">Día 4 • Colombia</p>
-                    <h1 className="text-3xl font-bold text-white mb-2 leading-tight">Explorando<br/>Cartagena</h1>
-                    
-                    <div className="flex items-center gap-4 mt-4">
-                       <div className="flex -space-x-3">
-                          {[adminAvatar, userFrance, userJapan].map((img, i) => (
-                             <div key={i} className="w-8 h-8 rounded-full border-2 border-slate-800 overflow-hidden">
-                                <img src={img} className="w-full h-full object-cover" alt="User" />
-                             </div>
-                          ))}
-                       </div>
-                       <div className="h-8 w-[1px] bg-white/20" />
-                       <div className="text-white">
-                          <p className="text-sm font-bold">342 km</p>
-                          <p className="text-[10px] text-white/60">Recorridos</p>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-           </div>
-        </div>
-
-        {/* Stats / Quick Actions */}
-        <div className="px-6 mb-8 flex gap-4">
-           <div className="flex-1 bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all">
-              <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
-                 <MapPin size={20} />
-              </div>
-              <div>
-                 <p className="text-xl font-bold text-slate-900">12</p>
-                 <p className="text-xs text-slate-400 font-medium">Países</p>
-              </div>
-           </div>
-           <div className="flex-1 bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all">
-              <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                 <Globe size={20} />
-              </div>
-              <div>
-                 <p className="text-xl font-bold text-slate-900">84%</p>
-                 <p className="text-xs text-slate-400 font-medium">Mundo</p>
-              </div>
-           </div>
-        </div>
-
-        {/* Community Feed (Horizontal) */}
-        <div className="mb-8">
-           <div className="px-6 mb-4 flex justify-between items-center">
-              <h3 className="font-bold text-slate-900 text-lg">Viajeros que sigues</h3>
-           </div>
-           <div className="flex gap-4 overflow-x-auto hide-scrollbar px-6 pb-2">
-              <Link href="/community">
-                <div className="flex flex-col items-center gap-2 shrink-0 cursor-pointer">
-                   <div className="w-16 h-16 rounded-full border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-400 hover:border-primary hover:text-primary transition-colors bg-white">
+        {/* Stories / Quick Actions */}
+        <div className="mt-6 mb-8 px-6">
+           <div className="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+              <Link href="/create-trip">
+                <div className="flex flex-col items-center gap-2 shrink-0 cursor-pointer group">
+                   <div className="w-16 h-16 rounded-[1.5rem] border-2 border-dashed border-neon-grape/50 flex items-center justify-center text-neon-grape bg-neon-grape/5 group-hover:bg-neon-grape/10 transition-colors">
                       <Plus size={24} />
                    </div>
-                   <span className="text-xs font-medium text-slate-500">Buscar</span>
+                   <span className="text-xs font-bold text-slate-600">Crear</span>
                 </div>
               </Link>
               {activeUsers.map((user, i) => (
@@ -135,50 +96,126 @@ export default function Home() {
                   transition={{ delay: i * 0.1 }}
                   className="flex flex-col items-center gap-2 shrink-0 cursor-pointer group"
                 >
-                   <div className="w-16 h-16 rounded-full p-[2px] bg-gradient-to-tr from-primary to-transparent group-hover:from-primary group-hover:to-primary transition-all">
-                      <div className="w-full h-full rounded-full border-2 border-white overflow-hidden relative">
+                   <div className="w-16 h-16 rounded-[1.5rem] p-[2px] bg-gradient-to-tr from-neon-kiwi to-neon-pineapple group-hover:shadow-lg group-hover:shadow-neon-kiwi/30 transition-all">
+                      <div className="w-full h-full rounded-[1.4rem] border-2 border-white overflow-hidden relative">
                         <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
                       </div>
                    </div>
-                   <div className="text-center">
-                      <span className="text-xs font-bold text-slate-700 block">{user.name}</span>
-                      <span className="text-[10px] text-slate-400 block">{user.status}</span>
-                   </div>
+                   <span className="text-xs font-medium text-slate-500">{user.name}</span>
                 </motion.div>
               ))}
            </div>
         </div>
 
-        {/* Inspirational Destinations */}
-        <div className="px-6 space-y-6">
-           <h3 className="font-bold text-slate-900 text-lg">Inspiración Semanal</h3>
-           
-           {[
-             { title: "Escapada a Kyoto", loc: "Japón", img: kyotoImg, days: "7 días" },
-             { title: "Alpes Suizos", loc: "Suiza", img: swissImg, days: "5 días" },
-             { title: "Verano en Santorini", loc: "Grecia", img: santoriniImg, days: "10 días" },
-           ].map((item, i) => (
+        {/* Featured Hero Card */}
+        <div className="px-6 mb-8 relative z-10">
+           <div className="bg-slate-900 rounded-[2.5rem] p-1 shadow-2xl shadow-neon-grape/20 overflow-hidden relative group cursor-pointer h-[320px]">
+              <div className="absolute inset-0">
+                 <img src={cartagenaImg} className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700" alt="Map bg" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+              </div>
+
+              <div className="relative h-full flex flex-col justify-between p-6">
+                 <div className="flex justify-between items-start">
+                    <div className="bg-white/10 backdrop-blur-md rounded-full px-3 py-1 text-xs font-bold text-white border border-white/10 flex items-center gap-2 shadow-lg">
+                       <div className="w-2 h-2 rounded-full bg-neon-kiwi animate-pulse shadow-[0_0_10px_theme(colors.neon.kiwi)]" />
+                       Viaje Activo
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-md rounded-full p-2 text-white border border-white/10 hover:bg-white/20 transition-colors">
+                       <Globe size={18} />
+                    </div>
+                 </div>
+
+                 <div>
+                    <div className="flex items-center gap-2 mb-2">
+                       <span className="px-2 py-0.5 rounded-md bg-neon-raspberry text-white text-[10px] font-bold uppercase tracking-wider shadow-lg shadow-neon-raspberry/40">
+                         Día 4
+                       </span>
+                       <span className="text-white/80 text-xs font-medium uppercase tracking-widest">Colombia</span>
+                    </div>
+                    <h1 className="text-4xl font-extrabold text-white mb-4 leading-[0.9] tracking-tight">
+                      Explorando<br/>
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-pineapple to-neon-kiwi">Cartagena</span>
+                    </h1>
+                    
+                    <div className="flex items-center gap-4">
+                       <div className="flex -space-x-3">
+                          {[adminAvatar, userFrance, userJapan].map((img, i) => (
+                             <div key={i} className="w-9 h-9 rounded-full border-2 border-slate-900 overflow-hidden ring-1 ring-white/20">
+                                <img src={img} className="w-full h-full object-cover" alt="User" />
+                             </div>
+                          ))}
+                       </div>
+                       <div className="h-8 w-[1px] bg-white/20" />
+                       <div className="text-white">
+                          <p className="text-sm font-bold font-mono text-neon-pineapple">342 km</p>
+                          <p className="text-[10px] text-white/60">Recorridos</p>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+
+        {/* Feed Section */}
+        <div className="px-6 space-y-8">
+           <h3 className="font-bold text-slate-900 text-xl flex items-center gap-2">
+             <span className="w-2 h-8 rounded-full bg-neon-raspberry" />
+             Tu Feed
+           </h3>
+
+           {feedItems.map((item, i) => (
              <motion.div 
-               key={i}
-               initial={{ opacity: 0, y: 20 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ delay: 0.2 + i * 0.1 }}
-               className="bg-white rounded-2xl p-3 shadow-sm border border-slate-100 flex gap-4 cursor-pointer hover:shadow-md transition-all group"
+               key={item.id}
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.5 }}
+               className="bg-white rounded-[2rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100"
              >
-                <div className="w-24 h-24 rounded-xl overflow-hidden shrink-0">
-                   <img src={item.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt={item.title} />
-                </div>
-                <div className="flex-1 py-1 flex flex-col justify-center">
-                   <h4 className="font-bold text-slate-900 text-lg mb-1">{item.title}</h4>
-                   <div className="flex items-center gap-1 text-slate-500 text-xs mb-3">
-                      <MapPin size={12} /> {item.loc}
-                   </div>
-                   <div className="flex items-center justify-between mt-auto">
-                      <span className="text-xs font-medium bg-slate-100 px-2 py-1 rounded-md text-slate-600">{item.days}</span>
-                      <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white transition-colors">
-                         <ArrowRight size={16} />
+                <div className="p-4 flex items-center justify-between">
+                   <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full p-[2px] bg-gradient-to-tr from-neon-grape to-neon-raspberry">
+                         <img src={item.user.avatar} className="w-full h-full rounded-full border-2 border-white object-cover" alt={item.user.name} />
+                      </div>
+                      <div>
+                         <h4 className="font-bold text-sm text-slate-900">{item.user.name}</h4>
+                         <p className="text-xs text-slate-500 flex items-center gap-1">
+                           <MapPin size={10} className="text-neon-grape" /> {item.user.location}
+                         </p>
                       </div>
                    </div>
+                   <Button variant="ghost" size="icon" className="text-slate-400">
+                      <MoreHorizontal size={20} />
+                   </Button>
+                </div>
+                
+                <div className="aspect-[4/5] relative bg-slate-100">
+                   <img src={item.image} className="w-full h-full object-cover" alt="Post" />
+                </div>
+
+                <div className="p-4">
+                   <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-4">
+                         <button className="text-slate-800 hover:text-neon-raspberry transition-colors">
+                            <Heart size={24} />
+                         </button>
+                         <button className="text-slate-800 hover:text-neon-grape transition-colors">
+                            <MessageCircle size={24} />
+                         </button>
+                         <button className="text-slate-800 hover:text-neon-pineapple transition-colors">
+                            <Share2 size={24} />
+                         </button>
+                      </div>
+                      <button className="text-slate-800">
+                         <span className="text-sm font-bold">{item.likes} likes</span>
+                      </button>
+                   </div>
+                   <p className="text-sm text-slate-700 leading-relaxed">
+                      <span className="font-bold mr-2">{item.user.name}</span>
+                      {item.caption}
+                   </p>
+                   <p className="text-xs text-slate-400 mt-2 uppercase tracking-wide font-medium">{item.time}</p>
                 </div>
              </motion.div>
            ))}
