@@ -1,5 +1,5 @@
 import Layout from "@/components/layout";
-import { Settings, CreditCard, Bell, LogOut, ChevronRight, MapPin, Camera, Heart, Globe, Award, Shield, Plane, BookOpen, Star, User, Image as ImageIcon, Video } from "lucide-react";
+import { Settings, CreditCard, Bell, LogOut, ChevronRight, MapPin, Camera, Heart, Globe, Award, Shield, Plane, BookOpen, Star, User, Image as ImageIcon, Video, Share2 } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
