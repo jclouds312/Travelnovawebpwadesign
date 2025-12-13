@@ -1,11 +1,20 @@
 import { Link, useLocation } from "wouter";
-import { Home, Map, Plus, Users, User } from "lucide-react";
+import { Home, Map, Plus, Users, User, LayoutDashboard, Settings, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/lib/use-mock-auth";
+
+interface NavItem {
+  icon: LucideIcon;
+  label: string;
+  path: string;
+  isPrimary?: boolean;
+}
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
+  const { role } = useAuth();
 
-  const navItems = [
+  const userNavItems: NavItem[] = [
     { icon: Home, label: "Inicio", path: "/" },
     { icon: Map, label: "Viajes", path: "/trips" },
     { icon: Plus, label: "Crear", path: "/create-trip", isPrimary: true },
@@ -13,9 +22,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { icon: User, label: "Perfil", path: "/profile" },
   ];
 
+  const adminNavItems: NavItem[] = [
+    { icon: LayoutDashboard, label: "Admin", path: "/admin" },
+    { icon: Users, label: "Users", path: "/admin/users" },
+    { icon: Map, label: "Trips", path: "/admin/trips" },
+    { icon: Settings, label: "Settings", path: "/admin/settings" },
+  ];
+
+  const navItems = role === 'admin' ? adminNavItems : userNavItems;
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col max-w-md mx-auto shadow-2xl overflow-hidden relative border-x border-slate-100">
       <main className="flex-1 overflow-y-auto pb-24 hide-scrollbar font-sans">
+        {/* Dev Mode Toggle (Hidden/Small) */}
+        <Link href="/dev/mode">
+            <div className="fixed top-2 right-2 z-50 w-2 h-2 rounded-full bg-transparent hover:bg-red-500 cursor-pointer" title="Dev Mode" />
+        </Link>
         {children}
       </main>
 

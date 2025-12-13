@@ -2,6 +2,9 @@ import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
+import { AuthProvider } from "@/lib/use-mock-auth";
+
+// Pages
 import Home from "@/pages/home";
 import Explore from "@/pages/explore";
 import Saved from "@/pages/saved";
@@ -16,6 +19,14 @@ import CreateTrip from "@/pages/create-trip";
 import Community from "@/pages/community";
 import TripDetail from "@/pages/trip-detail";
 import NotFound from "@/pages/not-found";
+
+// New Pages
+import AdminDashboard from "@/pages/admin/dashboard";
+import ModeSelector from "@/pages/dev/mode-selector";
+import PackingList from "@/pages/trip/packing-list";
+import TripBudget from "@/pages/trip/budget";
+import Notifications from "@/pages/notifications";
+import SettingsPage from "@/pages/settings/account";
 
 function Router() {
   return (
@@ -35,6 +46,15 @@ function Router() {
       <Route path="/explore" component={Explore} />
       <Route path="/saved" component={Saved} />
       <Route path="/profile" component={Profile} />
+      
+      {/* Dev / New Features */}
+      <Route path="/dev/mode" component={ModeSelector} />
+      <Route path="/admin" component={AdminDashboard} />
+      <Route path="/trip/:id/packing" component={PackingList} />
+      <Route path="/trip/:id/budget" component={TripBudget} />
+      <Route path="/notifications" component={Notifications} />
+      <Route path="/settings" component={SettingsPage} />
+
       <Route component={NotFound} />
     </Switch>
   );
@@ -43,8 +63,10 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <AuthProvider>
         <Toaster />
         <Router />
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
